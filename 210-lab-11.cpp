@@ -34,5 +34,12 @@ int main()
 
 void inputTrail(HikingTrail *ptr) // Function will allow user to input all members of each HikingTrail object.
 {
-    cout << " 
+    static int trailNr = 1; // Neatly reminds user which trail they are inputting data for.
+    cout << "Enter the information for hiking trail # " << trailNr << "\n";
+    cout << "Name of trail: ";
+    getline(cin, ptr->name);
+    cout << "\nLength of trail in miles: ";
+    cin >> ptr->miles;
+    cout << "\n How much flora does this trail have? ";
+    int floraNr; // 
 }
