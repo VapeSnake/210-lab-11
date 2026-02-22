@@ -6,7 +6,7 @@ using namespace std;
 struct HikingTrail { // Idea: App that displays hiking trails by name(string), length(double), and flora(dynamic string array).
     string name;
     double miles;
-    string *flora;
+    string *flora; //To allow a dynamic array of strings in object.
 
     ~HikingTrail() 
     {
@@ -41,5 +41,11 @@ void inputTrail(HikingTrail *ptr) // Function will allow user to input all membe
     cout << "\nLength of trail in miles: ";
     cin >> ptr->miles;
     cout << "\n How much flora does this trail have? ";
-    int floraNr; // 
+    int floraNr; // Allows user to define how many flora to include for current trail.
+    cin >> floraNr;
+    ptr->flora = new string[floraNr];
+    for (int i = 0; i < floraNr; i++)
+        {   
+            cout << "\n Flora #" << i + 1 << ": ";
+        }
 }
