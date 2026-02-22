@@ -23,10 +23,10 @@ int main()
 {
     int numberOfTrails; // Will be used to make dynamic array of HikingTrail objects via user input.
 
-    cout << "Enter the number of hiking trails you want to compare: ";
+    cout << "Enter the number of hiking trails you want to display: ";
     cin >> numberOfTrails;
     cin.ignore(); // Ensures buffer is clear for following getline call in inputTrail function.
-    cout << "\n ";
+    cout << "\n";
     HikingTrail *listOfTrails = new HikingTrail[numberOfTrails]; // Creates dynamic array of HikingTrail objects.
 
     for (int i = 0; i < numberOfTrails; i++)
@@ -49,15 +49,26 @@ void inputTrail(HikingTrail *ptr) // Function will allow user to input all membe
     cout << "Name of trail: ";
     getline(cin, ptr->name);
     cout << "\nLength of trail in miles: ";
-    cin >> ptr->miles;
-    cout << "\n How much flora does this trail have? ";
+    while (!(cin >> ptr->miles) || ptr->miles < 0) // Input validation for miles. Ensures user inputs a non-negative number.
+    {
+        cout << "\n Invalid input. Enter a non-negative value.\n";
+        cin.clear();
+        cin.ignore(1000, '\n'); // Clears error state and ignores invalid input from last 1000 characters.
+    }
+    
+    cout << "\nHow much flora does this trail have? ";
     int floraNr; // Allows user to define how many flora to include for current trail.
-    cin >> floraNr;
+    while (!(cin >> floraNr) || floraNr < 0) // Input validation for flora number. Ensures user inputs a non-negative integer.
+    {
+        cout << "\n Invalid input. Enter a non-negative integer.\n";
+        cin.clear();
+        cin.ignore(1000, '\n'); // Clears error state and ignores invalid input from last 1000 characters.
+    }
     cin.ignore(); // I include this anytime a cin call precedes any getline call since cin >> ignores leading whitespace, or empty spaces.
     ptr->flora = new string[floraNr];
     for (int i = 0; i < floraNr; i++)
         {   
-            cout << "\n Flora #" << i + 1 << ": ";
+            cout << "\nFlora #" << i + 1 << ": ";
             getline(cin, ptr->flora[i]);
         }
      trailNr++; // Increases static counter so future calls to function will correctly display which trail is being inputted into array.
@@ -66,6 +77,7 @@ void inputTrail(HikingTrail *ptr) // Function will allow user to input all membe
 void displayTrail(HikingTrail *ptr, int size)
 {
     static int trailNr = 1;
+    cout << "-------------------------- " << endl;
     cout << "Trail #" << trailNr << endl;
     cout << "\nTrail name: " << ptr->name << endl; // Access all variables of each dynamically built object.
     cout << "\nLength of trail: " << ptr->miles << endl;
