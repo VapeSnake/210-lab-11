@@ -3,7 +3,7 @@
 
 using namespace std;
 
-struct HikingTrail { // Idea: App that categorizes hiking trails by name(string), length(double), and flora(dynamic string array).
+struct HikingTrail { // Idea: App that displays hiking trails by name(string), length(double), and flora(dynamic string array).
     string name;
     double miles;
     string *flora;
@@ -16,15 +16,23 @@ struct HikingTrail { // Idea: App that categorizes hiking trails by name(string)
     }
 };
 
-void inputTrail(HikingTrail *); //
+void inputTrail(HikingTrail *); 
 void display(HikingTrail *);
 
 int main() 
 {
-    int numberOfTrails;
+    int numberOfTrails; // Will be used to make dynamic array of HikingTrail objects via user input.
 
-
+    cout << "Enter the number of hiking trails you want to compare: ";
+    cin >> numberOfTrails;
+    cout << "\n ";
+    HikingTrail *listOfTrails = new HikingTrail[numberOfTrails]; // Creates dynamic array of HikingTrail objects.
 
 
     return 0;
+}
+
+void inputTrail(HikingTrail *ptr) // Function will allow user to input all members of each HikingTrail object.
+{
+    cout << " 
 }
