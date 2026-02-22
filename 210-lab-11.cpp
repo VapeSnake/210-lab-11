@@ -29,6 +29,15 @@ int main()
     cout << "\n ";
     HikingTrail *listOfTrails = new HikingTrail[numberOfTrails]; // Creates dynamic array of HikingTrail objects.
 
+    for (int i = 0; i < numberOfTrails; i++)
+    {   
+        inputTrail(&listOfTrails[i]); // Loop to initialize each object's members in array of objects. 
+    }
+
+    for (int i = 0; i < numberOfTrails; i++)
+    {
+        displayTrail(&listOfTrails[i], numberOfTrails); // Includes number of trails to account for number of flora for each object.
+    }
 
     return 0;
 }
