@@ -25,6 +25,7 @@ int main()
 
     cout << "Enter the number of hiking trails you want to compare: ";
     cin >> numberOfTrails;
+    cin.ignore(); // Ensures buffer is clear for following getline call in inputTrail function.
     cout << "\n ";
     HikingTrail *listOfTrails = new HikingTrail[numberOfTrails]; // Creates dynamic array of HikingTrail objects.
 
@@ -43,9 +44,12 @@ void inputTrail(HikingTrail *ptr) // Function will allow user to input all membe
     cout << "\n How much flora does this trail have? ";
     int floraNr; // Allows user to define how many flora to include for current trail.
     cin >> floraNr;
+    cin.ignore(); // I include this anytime a cin call precedes any getline call since cin >> ignores leading whitespace, or empty spaces.
     ptr->flora = new string[floraNr];
     for (int i = 0; i < floraNr; i++)
         {   
             cout << "\n Flora #" << i + 1 << ": ";
+            getline(cin, ptr->flora[i]);
         }
+     trailNr++; // Increases static counter so future calls to function will correctly display which trail is being inputted into array.
 }
