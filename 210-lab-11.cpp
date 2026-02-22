@@ -17,7 +17,7 @@ struct HikingTrail { // Idea: App that displays hiking trails by name(string), l
 };
 
 void inputTrail(HikingTrail *); 
-void displayTrail(HikingTrail *);
+void displayTrail(HikingTrail *, int);
 
 int main() 
 {
@@ -54,11 +54,16 @@ void inputTrail(HikingTrail *ptr) // Function will allow user to input all membe
      trailNr++; // Increases static counter so future calls to function will correctly display which trail is being inputted into array.
 }
 
-void displayTrail(HikingTrail *ptr)
+void displayTrail(HikingTrail *ptr, int size)
 {
     static int trailNr = 1;
     cout << "Trail #" << trailNr << endl;
-    cout << "Trail name: " << ptr->name << endl;
-    cout << "Length of trail: " << ptr->miles << endl;
-    for 
+    cout << "\nTrail name: " << ptr->name << endl; // Access all variables of each dynamically built object.
+    cout << "\nLength of trail: " << ptr->miles << endl;
+    for (int i = 0; i < size; i++)
+        {
+            cout << "\nFlora # " << i + 1 << ": " << ptr->flora[i]; // Access each string of dynamic string array of each object. Dynamic-ception.
+        }
+    cout << "\n-------------------------- " << endl; // Separates each Trail for neatness.
+    trailNr++; // Increases counter.
 }
