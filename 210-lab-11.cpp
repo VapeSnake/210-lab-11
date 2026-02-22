@@ -17,7 +17,7 @@ struct HikingTrail { // Idea: App that displays hiking trails by name(string), l
 };
 
 void inputTrail(HikingTrail *); 
-void display(HikingTrail *);
+void displayTrail(HikingTrail *);
 
 int main() 
 {
@@ -35,7 +35,7 @@ int main()
 
 void inputTrail(HikingTrail *ptr) // Function will allow user to input all members of each HikingTrail object.
 {
-    static int trailNr = 1; // Neatly reminds user which trail they are inputting data for.
+    static int trailNr = 1; // Counter reminds user which trail they are inputting data for.
     cout << "Enter the information for hiking trail # " << trailNr << "\n";
     cout << "Name of trail: ";
     getline(cin, ptr->name);
@@ -52,4 +52,13 @@ void inputTrail(HikingTrail *ptr) // Function will allow user to input all membe
             getline(cin, ptr->flora[i]);
         }
      trailNr++; // Increases static counter so future calls to function will correctly display which trail is being inputted into array.
+}
+
+void displayTrail(HikingTrail *ptr)
+{
+    static int trailNr = 1;
+    cout << "Trail #" << trailNr << endl;
+    cout << "Trail name: " << ptr->name << endl;
+    cout << "Length of trail: " << ptr->miles << endl;
+    for 
 }
