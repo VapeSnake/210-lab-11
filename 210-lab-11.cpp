@@ -3,7 +3,11 @@
 
 using namespace std;
 
-struct //Ideas: Inpatient Record System?/App that categorizes hiking trails by difficulty and wildlife&flora?
+struct HikingTrail { //Idea: App that categorizes hiking trails by name(string), length(double), and flora(dynamic string array).
+    string name;
+    double miles;
+    string *flora;
+}
 
 
 int main() 
